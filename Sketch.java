@@ -2,7 +2,8 @@ import processing.core.PApplet;
 
 public class Sketch extends PApplet {
 	
-	
+	int backgroundR = 0, backgroundG = 0, backgroundB = 0;
+  boolean shift = false;
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
@@ -16,21 +17,32 @@ public class Sketch extends PApplet {
    * values here i.e background, stroke, fill etc.
    */
   public void setup() {
-    background(210, 255, 173);
+    background(backgroundR, backgroundG, backgroundB);
   }
 
   /**
    * Called repeatedly, anything drawn to the screen goes here
    */
   public void draw() {
-	  
-	// sample code, delete this stuff
-    stroke(128);
-    line(150, 25, 270, 350);  
+    background(backgroundR, backgroundG, backgroundB);
 
-    stroke(255);
-    line(50, 125, 70, 50);  
   }
   
-  // define other methods down here.
+  public void keyPressed(){
+    if ('r' == key){backgroundR = 255;}
+    if ('g' == key){backgroundG = 255;}
+    if ('b' == key){backgroundB = 255;}
+    if (SHIFT == keyCode){shift = true;}
+  }
+
+  public void keyReleased(){
+    if ('r' == key){backgroundR = 0;}
+    if ('g' == key){backgroundG = 0;}
+    if ('b' == key){backgroundB = 0;}
+    if (SHIFT == keyCode){shift = false;}
+  }
+
+  public void mousePressed(){
+    if (shift){}
+  }
 }
