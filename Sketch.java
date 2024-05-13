@@ -6,7 +6,6 @@ import processing.event.MouseEvent;
 public class Sketch extends PApplet {
 	
 	int backgroundR = 0, backgroundG = 0, backgroundB = 0;
-  boolean shift = false;
   int size = 10;
 
   ArrayList<OLine> lines = new ArrayList<OLine>();
@@ -24,15 +23,15 @@ public class Sketch extends PApplet {
    * Called once at the beginning of execution.  Add initial set up
    * values here i.e background, stroke, fill etc.
    */
-  public void setup() {stroke(255);}
+  public void setup() {noFill(); stroke(255);}
 
   /**
    * Called repeatedly, anything drawn to the screen goes here
    */
   public void draw() {
     background(backgroundR, backgroundG, backgroundB);
-    if (mousePressed && !keyPressed == (keyCode == SHIFT) ){circles.add(new OCircle(mouseX, mouseY, size * 2) );}
     noFill();
+    if (mousePressed && (!keyPressed == (keyCode == SHIFT) ) ){circles.add(new OCircle(mouseX, mouseY, size * 2) );}
     for (OLine line : lines){
       strokeWeight(line.getWidth() );
       line(line.getX(), line.getY(), line.getX2(), line.getY2() );
